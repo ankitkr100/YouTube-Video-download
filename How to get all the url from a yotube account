@@ -1,0 +1,41 @@
+Code 1:
+
+var scroll = setInterval(function(){ window.scrollBy(0, 1000)}, 1000); 
+
+
+Code 2:
+
+window.clearInterval(scroll); console.clear(); urls = $$('a'); urls.forEach(function(v,i,a){if (v.id=="video-title"){console.log('\t'+v.title+'\t'+v.href+'\t')}}); 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OR
+
+// Select all anchor elements
+var links = document.querySelectorAll('a');
+
+// Initialize an empty string to store URLs
+var urls = "";
+
+// Iterate over each link
+links.forEach(function(link) {
+  // Get the href attribute value
+  var href = link.getAttribute('href');
+ 
+  // Check if href contains "/shorts/"
+  if (href && href.includes("/shorts/")) {
+    // Append the URL to the urls string
+    urls += "youtube.com"+href + "\n";
+  }
+});
+
+// Prompt the user to copy the URLs manually
+if (urls) {
+  console.log("URLs containing '/shorts/':\n" + urls);
+  console.log("Please copy these URLs manually.");
+} else {
+  console.log("No URLs containing '/shorts/' found.");
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Modified code
+
+
+var links=document.querySelectorAll("a"),uniqueUrls=new Set;links.forEach(function(n){var e="youtube.com"+n.getAttribute("href");e&&e.includes("/shorts/")&&uniqueUrls.add(e)});var uniqueUrlsArray=Array.from(uniqueUrls);if(uniqueUrlsArray.length>0){var urls=uniqueUrlsArray.join("\n");console.log("Unique URLs containing '/shorts/':\n"+urls),console.log("Please copy these URLs manually.")}else console.log("No unique URLs containing '/shorts/' found.");
